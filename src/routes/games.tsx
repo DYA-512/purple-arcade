@@ -78,8 +78,8 @@ function GamesPage() {
             Play something <span className="text-sunset">for fun</span>
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-            Six games where nothing counts, scores evaporate, and effort is
-            punished. Pick one and accomplish nothing.
+             Six simple games where points stack up and pure fun is guaranteed.
+             Choose your challenge!
           </p>
         </section>
 
