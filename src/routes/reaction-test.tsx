@@ -80,7 +80,7 @@ function ReactionTest() {
 
   const label: Record<Phase, string> = {
     idle: "Click to start",
-    waiting: "Wait for orange…",
+    waiting: "Wait for purple…",
     decoy: "Decoy! Don't click",
     go: "CLICK NOW",
     result: `${ms} ms (probably wrong) — click to waste more time`,
