@@ -26,11 +26,11 @@ const palette = [
   { name: "Purple", css: "oklch(0.55 0.19 310)" },
 ];
 
-const pick = () => palette[Math.floor(Math.random() * palette.length)];
+const pick = () => palette[Math.floor(Math.random() * palette.length)]!;
 
 function ColorTrap() {
-  const [word, setWord] = useState(palette[0]);
-  const [ink, setInk] = useState(palette[1]);
+  const [word, setWord] = useState(palette[0]!);
+  const [ink, setInk] = useState(palette[1]!);
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
   const [time, setTime] = useState(30);
