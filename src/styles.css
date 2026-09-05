@@ -148,3 +148,49 @@
     color: var(--color-foreground);
   }
 }
+
+@theme {
+  --font-display: "Fredoka", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Nunito", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    background-image: radial-gradient(
+        900px 500px at 10% -10%,
+        color-mix(in oklab, var(--accent) 35%, transparent),
+        transparent
+      ),
+      radial-gradient(
+        800px 480px at 100% 0%,
+        color-mix(in oklab, var(--primary) 22%, transparent),
+        transparent
+      );
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility surface-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-soft);
+}
+
+@utility gradient-sunset {
+  background-image: var(--gradient-sunset);
+}
+
+@utility text-sunset {
+  background-image: var(--gradient-sunset);
+  background-clip: text;
+  color: transparent;
+}
