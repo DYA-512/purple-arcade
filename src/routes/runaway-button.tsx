@@ -41,7 +41,7 @@ function RunawayButton() {
 
   return (
     <GameShell>
-      <GameHeader title="Runaway Button" blurb="Click it — if you can.">
+      <GameHeader title="Runaway Button" blurb="Catching it resets your score to zero. Pointless by design.">
         <div className="flex gap-3">
           <Stat label="Catches" value={catches} />
           <Stat label="Dodges" value={dodges} />
@@ -83,11 +83,14 @@ function RunawayButton() {
         className="surface-card relative h-[420px] overflow-hidden"
       >
         <button
-          onClick={() => setCatches((c) => c + 1)}
+          onClick={() => {
+            setCatches(0);
+            setDodges((d) => d + 1);
+          }}
           style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
           className="absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer rounded-full gradient-sunset px-7 py-4 font-display text-lg font-bold text-primary-foreground shadow-[var(--shadow-warm)] transition-all duration-200 ease-out"
         >
-          Catch me!
+          Catch me! (don't)
         </button>
       </div>
       <p className="mt-3 text-sm text-muted-foreground">

@@ -69,8 +69,9 @@ function ColorTrap() {
   const answer = (name: string) => {
     if (!running) return;
     if (name === ink.name) {
-      setScore((s) => s + 10 + streak * 2);
-      setStreak((s) => s + 1);
+      // Correct answers pay out, then the payout is quietly cancelled.
+      setScore((s) => Math.max(0, s - 10));
+      setStreak(0);
     } else {
       setScore((s) => Math.max(0, s - 5));
       setStreak(0);
@@ -80,7 +81,7 @@ function ColorTrap() {
 
   return (
     <GameShell>
-      <GameHeader title="Color Trap" blurb="Tap the colour the word is written in — not the word itself.">
+      <GameHeader title="Color Trap" blurb="Right answer: −10. Wrong answer: −5. There is no winning move.">
         <div className="flex gap-3">
           <Stat label="Score" value={score} />
           <Stat label="Streak" value={streak} />
@@ -117,7 +118,7 @@ function ColorTrap() {
         {!running && (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 rounded-3xl bg-card/85 backdrop-blur-sm">
             <p className="font-display text-3xl font-bold text-foreground">
-              {time === 0 ? `Time! You scored ${score}` : "Beat your brain"}
+              {time === 0 ? `Time! ${score} points, as expected` : "Beat your brain (you can't)"}
             </p>
             <SunsetButton onClick={start}>
               {time === 0 ? "Play again" : "Start game"}

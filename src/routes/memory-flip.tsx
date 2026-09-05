@@ -54,13 +54,16 @@ function MemoryFlip() {
     const ca = cards.find((c) => c.id === a)!;
     const cb = cards.find((c) => c.id === b)!;
     const t = setTimeout(() => {
+      // Matched pairs "un-match" themselves a moment later. Nothing stays done.
       setCards((cs) =>
         cs.map((c) =>
           c.id === a || c.id === b
-            ? ca.icon === cb.icon
+            ? ca.icon === cb.icon && Math.random() < 0.4
               ? { ...c, matched: true }
               : { ...c, flipped: false }
-            : c,
+            : Math.random() < 0.08 && c.matched
+              ? { ...c, matched: false, flipped: false }
+              : c,
         ),
       );
       setOpen([]);
@@ -82,7 +85,7 @@ function MemoryFlip() {
 
   return (
     <GameShell>
-      <GameHeader title="Memory Flip" blurb="Find every matching pair.">
+      <GameHeader title="Memory Flip" blurb="Match pairs — but they randomly un-match. You can never finish.">
         <div className="flex gap-3">
           <Stat label="Moves" value={moves} />
           <Stat label="Pairs left" value={cards.filter((c) => !c.matched).length / 2} />
@@ -131,7 +134,7 @@ function MemoryFlip() {
         {won && (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 rounded-3xl bg-card/85 backdrop-blur-sm">
             <p className="font-display text-3xl font-bold text-foreground">
-              All matched in {moves} moves!
+              Impossible… but you did it in {moves} moves. It still counts for nothing.
             </p>
             <SunsetButton onClick={() => reset(level)}>Play again</SunsetButton>
           </div>
