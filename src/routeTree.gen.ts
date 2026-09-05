@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BubblePopRouteImport } from './routes/bubble-pop'
 import { Route as ColorTrapRouteImport } from './routes/color-trap'
+import { Route as GamesRouteImport } from './routes/games'
 import { Route as MemoryFlipRouteImport } from './routes/memory-flip'
 import { Route as ReactionTestRouteImport } from './routes/reaction-test'
 import { Route as RunawayButtonRouteImport } from './routes/runaway-button'
@@ -30,6 +31,11 @@ const BubblePopRoute = BubblePopRouteImport.update({
 const ColorTrapRoute = ColorTrapRouteImport.update({
   id: '/color-trap',
   path: '/color-trap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GamesRoute = GamesRouteImport.update({
+  id: '/games',
+  path: '/games',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MemoryFlipRoute = MemoryFlipRouteImport.update({
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/bubble-pop': typeof BubblePopRoute
   '/color-trap': typeof ColorTrapRoute
+  '/games': typeof GamesRoute
   '/memory-flip': typeof MemoryFlipRoute
   '/reaction-test': typeof ReactionTestRoute
   '/runaway-button': typeof RunawayButtonRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/bubble-pop': typeof BubblePopRoute
   '/color-trap': typeof ColorTrapRoute
+  '/games': typeof GamesRoute
   '/memory-flip': typeof MemoryFlipRoute
   '/reaction-test': typeof ReactionTestRoute
   '/runaway-button': typeof RunawayButtonRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/bubble-pop': typeof BubblePopRoute
   '/color-trap': typeof ColorTrapRoute
+  '/games': typeof GamesRoute
   '/memory-flip': typeof MemoryFlipRoute
   '/reaction-test': typeof ReactionTestRoute
   '/runaway-button': typeof RunawayButtonRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/bubble-pop'
     | '/color-trap'
+    | '/games'
     | '/memory-flip'
     | '/reaction-test'
     | '/runaway-button'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/bubble-pop'
     | '/color-trap'
+    | '/games'
     | '/memory-flip'
     | '/reaction-test'
     | '/runaway-button'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/'
     | '/bubble-pop'
     | '/color-trap'
+    | '/games'
     | '/memory-flip'
     | '/reaction-test'
     | '/runaway-button'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BubblePopRoute: typeof BubblePopRoute
   ColorTrapRoute: typeof ColorTrapRoute
+  GamesRoute: typeof GamesRoute
   MemoryFlipRoute: typeof MemoryFlipRoute
   ReactionTestRoute: typeof ReactionTestRoute
   RunawayButtonRoute: typeof RunawayButtonRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/color-trap'
       fullPath: '/color-trap'
       preLoaderRoute: typeof ColorTrapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/games': {
+      id: '/games'
+      path: '/games'
+      fullPath: '/games'
+      preLoaderRoute: typeof GamesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/memory-flip': {
@@ -179,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BubblePopRoute: BubblePopRoute,
   ColorTrapRoute: ColorTrapRoute,
+  GamesRoute: GamesRoute,
   MemoryFlipRoute: MemoryFlipRoute,
   ReactionTestRoute: ReactionTestRoute,
   RunawayButtonRoute: RunawayButtonRoute,

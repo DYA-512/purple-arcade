@@ -10,10 +10,10 @@ export function GameShell({ children }: { children: ReactNode }) {
           className="flex items-center gap-2 font-display text-2xl font-bold text-foreground"
         >
           <span className="inline-block size-8 rounded-full gradient-sunset shadow-[var(--shadow-warm)]" />
-          Sunset Arcade
+          Purple Arcade
         </Link>
         <Link
-          to="/"
+          to="/games"
           className="rounded-full border border-border bg-card px-4 py-2 text-sm font-bold text-foreground shadow-[var(--shadow-soft)] transition hover:bg-secondary"
         >
           ← All games
