@@ -77,18 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Sunset Arcade — Free Mini Games" },
+      { title: "Purple Arcade — Free Mini Games" },
       {
         name: "description",
         content:
-          "A friendly warm-sunset arcade with six quick mini games: runaway buttons, bubble popping, reaction tests, whack-a-critter and more.",
+          "A friendly purple arcade with six quick mini games: runaway buttons, bubble popping, reaction tests, whack-a-critter and more.",
       },
-      { name: "author", content: "Sunset Arcade" },
-      { property: "og:title", content: "Sunset Arcade — Free Mini Games" },
+      { name: "author", content: "Purple Arcade" },
+      { property: "og:title", content: "Purple Arcade — Free Mini Games" },
       {
         property: "og:description",
         content:
-          "Six quick, friendly mini games in a warm sunset arcade. No sign-up, just play.",
+          "Six quick, friendly mini games in a purple arcade. No sign-up, just play.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

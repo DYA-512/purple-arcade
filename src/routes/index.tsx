@@ -1,104 +1,66 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Play } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Sunset Arcade — Free Mini Games" },
+      { title: "Purple Arcade — Welcome to Fun" },
       {
         name: "description",
-      content:
-          "Six gloriously useless mini games. Scores reset, pairs un-match, and nothing you do matters. Runaway Button, Bubble Pop, Reaction Test, Color Trap, Whack-a-Critter and Memory Flip.",
+        content:
+          "Welcome to Purple Arcade — a purple-tinted playground of gloriously useless mini games. Press play and waste some time in style.",
       },
-      { property: "og:title", content: "Sunset Arcade — Free Mini Games" },
+      { property: "og:title", content: "Purple Arcade — Welcome to Fun" },
       {
         property: "og:description",
-        content: "Six quick, friendly mini games. No sign-up, just play.",
+        content:
+          "A purple-tinted playground of gloriously useless mini games. Press play and waste some time in style.",
       },
       { property: "og:type", content: "website" },
     ],
   }),
-  component: Home,
+  component: Intro,
 });
 
-const games = [
-  {
-    to: "/runaway-button" as const,
-    name: "Runaway Button",
-    tagline: "Catch it and your score resets to zero.",
-    emoji: "🏃",
-  },
-  {
-    to: "/bubble-pop" as const,
-    name: "Bubble Pop",
-    tagline: "Popping bubbles costs you points.",
-    emoji: "🫧",
-  },
-  {
-    to: "/reaction-test" as const,
-    name: "Reaction Test",
-    tagline: "Your real reflex time is never shown.",
-    emoji: "⚡",
-  },
-  {
-    to: "/color-trap" as const,
-    name: "Color Trap",
-    tagline: "Every answer loses points. Every single one.",
-    emoji: "🎨",
-  },
-  {
-    to: "/whack-a-critter" as const,
-    name: "Whack-a-Critter",
-    tagline: "Critters are worth zero. Bombs still hurt.",
-    emoji: "🐹",
-  },
-  {
-    to: "/memory-flip" as const,
-    name: "Memory Flip",
-    tagline: "Pairs un-match themselves. Forever.",
-    emoji: "🃏",
-  },
-];
-
-function Home() {
+function Intro() {
   return (
-    <div className="min-h-screen">
-      <header className="mx-auto flex max-w-5xl items-center justify-between px-4 py-5">
-        <div className="flex items-center gap-2 font-display text-2xl font-bold text-foreground">
-          <span className="inline-block size-8 rounded-full gradient-sunset shadow-[var(--shadow-warm)]" />
-          Sunset Arcade
+    <div className="relative flex min-h-screen items-center justify-center overflow-hidden px-4">
+      {/* floating decorative blobs */}
+      <div className="pointer-events-none absolute -left-24 top-16 size-64 rounded-full bg-primary/15 blur-3xl" />
+      <div className="pointer-events-none absolute -right-20 bottom-24 size-72 rounded-full bg-accent/25 blur-3xl" />
+      <div className="pointer-events-none absolute right-1/4 top-10 size-32 rounded-full bg-secondary blur-2xl" />
+
+      <div className="relative z-10 max-w-2xl text-center">
+        <div className="mb-6 flex justify-center">
+          <span className="inline-block size-20 rounded-full gradient-sunset shadow-[var(--shadow-warm)]" />
         </div>
-      </header>
 
-      <main className="mx-auto max-w-5xl px-4 pb-20">
-        <section className="py-12 text-center">
-          <h1 className="mx-auto max-w-2xl font-display text-5xl font-bold leading-tight text-foreground sm:text-6xl">
-            Play something <span className="text-sunset">completely useless</span>
-          </h1>
-          <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-            Six games where nothing counts, scores evaporate, and effort is
-            punished. Pick one and accomplish nothing.
+        <p className="text-sm font-bold uppercase tracking-[0.3em] text-muted-foreground">
+          Welcome to
+        </p>
+        <h1 className="mt-3 font-display text-6xl font-bold leading-tight text-foreground sm:text-7xl">
+          Purple <span className="text-sunset">Arcade</span>
+        </h1>
+        <p className="mx-auto mt-5 max-w-md text-lg text-muted-foreground">
+          A tiny universe of games where nothing counts, points disappear, and
+          fun is the only prize. Ready to accomplish absolutely nothing?
+        </p>
+
+        <div className="mt-10 flex flex-col items-center gap-4">
+          <Link
+            to="/games"
+            className="group inline-flex items-center gap-3 rounded-full gradient-sunset px-10 py-5 font-display text-2xl font-bold text-primary-foreground shadow-[var(--shadow-warm)] transition hover:brightness-105 active:scale-95"
+          >
+            <span className="flex size-9 items-center justify-center rounded-full bg-white/25 transition group-hover:scale-110">
+              <Play className="size-5 fill-current" />
+            </span>
+            Play
+          </Link>
+          <p className="text-xs font-semibold text-muted-foreground">
+            No sign-up · No prizes · No point
           </p>
-        </section>
-
-        <section className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {games.map((g) => (
-            <Link
-              key={g.to}
-              to={g.to}
-              className="surface-card group p-6 transition duration-200 hover:-translate-y-1 hover:shadow-[var(--shadow-warm)]"
-            >
-              <div className="text-4xl">{g.emoji}</div>
-              <h2 className="mt-4 font-display text-2xl font-semibold text-foreground">
-                {g.name}
-              </h2>
-              <p className="mt-2 text-sm text-muted-foreground">{g.tagline}</p>
-              <span className="mt-4 inline-block rounded-full bg-secondary px-3 py-1 text-xs font-bold text-secondary-foreground transition group-hover:gradient-sunset group-hover:text-primary-foreground">
-                Play →
-              </span>
-            </Link>
-          ))}
-        </section>
-      </main>
+        </div>
+      </div>
     </div>
   );
 }
