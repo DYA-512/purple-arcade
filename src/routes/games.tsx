@@ -75,7 +75,7 @@ function GamesPage() {
       <main className="mx-auto max-w-5xl px-4 pb-20">
         <section className="py-12 text-center">
           <h1 className="mx-auto max-w-2xl font-display text-5xl font-bold leading-tight text-foreground sm:text-6xl">
-            Play something <span className="text-sunset">for fun</span>
+            Play something
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
              Six simple games where points stack up and pure fun is guaranteed.
