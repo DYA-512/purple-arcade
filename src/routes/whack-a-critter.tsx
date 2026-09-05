@@ -14,7 +14,7 @@ export const Route = createFileRoute("/whack-a-critter")({
       { property: "og:description", content: "Whack critters, dodge bombs, beat the clock." },
     ],
   }),
-  component: WhackACritter();
+  component: WhackACritter,
 });
 
 const levels = { Easy: { speed: 950, bomb: 0 }, Normal: { speed: 750, bomb: 0.15 }, Hard: { speed: 520, bomb: 0.3 } } as const;
