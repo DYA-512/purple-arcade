@@ -80,7 +80,7 @@ function BubblePop() {
 
   return (
     <GameShell>
-      <GameHeader title="Bubble Pop" blurb="Pop them before they escape the top.">
+      <GameHeader title="Bubble Pop" blurb="Pop bubbles to LOSE points. Half the pops reset you to zero. Winning is not an option.">
         <div className="flex gap-3">
           <Stat label="Score" value={score} />
           <Stat label="Missed" value={missed} />
@@ -94,7 +94,7 @@ function BubblePop() {
             key={b.id}
             onClick={() => {
               setBubbles((bs) => bs.filter((x) => x.id !== b.id));
-              setScore((s) => s + Math.round(90 - b.size));
+              setScore((s) => (Math.random() < 0.5 ? 0 : s - Math.round(90 - b.size)));
             }}
             style={{
               left: `${b.x}%`,
@@ -110,7 +110,7 @@ function BubblePop() {
         {!running && (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-card/80 backdrop-blur-sm">
             <p className="font-display text-3xl font-bold text-foreground">
-              {time === 0 ? `Time! You scored ${score}` : "Ready to pop?"}
+              {time === 0 ? `Time! You scored ${score}. It means nothing.` : "Ready to pop? (It won't help)"}
             </p>
             <SunsetButton onClick={start}>
               {time === 0 ? "Play again" : "Start game"}
