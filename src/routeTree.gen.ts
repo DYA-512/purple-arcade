@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BubblePopRouteImport } from './routes/bubble-pop'
+import { Route as ColorTrapRouteImport } from './routes/color-trap'
+import { Route as MemoryFlipRouteImport } from './routes/memory-flip'
+import { Route as ReactionTestRouteImport } from './routes/reaction-test'
+import { Route as RunawayButtonRouteImport } from './routes/runaway-button'
+import { Route as WhackACritterRouteImport } from './routes/whack-a-critter'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BubblePopRoute = BubblePopRouteImport.update({
+  id: '/bubble-pop',
+  path: '/bubble-pop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ColorTrapRoute = ColorTrapRouteImport.update({
+  id: '/color-trap',
+  path: '/color-trap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MemoryFlipRoute = MemoryFlipRouteImport.update({
+  id: '/memory-flip',
+  path: '/memory-flip',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReactionTestRoute = ReactionTestRouteImport.update({
+  id: '/reaction-test',
+  path: '/reaction-test',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RunawayButtonRoute = RunawayButtonRouteImport.update({
+  id: '/runaway-button',
+  path: '/runaway-button',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WhackACritterRoute = WhackACritterRouteImport.update({
+  id: '/whack-a-critter',
+  path: '/whack-a-critter',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/bubble-pop': typeof BubblePopRoute
+  '/color-trap': typeof ColorTrapRoute
+  '/memory-flip': typeof MemoryFlipRoute
+  '/reaction-test': typeof ReactionTestRoute
+  '/runaway-button': typeof RunawayButtonRoute
+  '/whack-a-critter': typeof WhackACritterRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/bubble-pop': typeof BubblePopRoute
+  '/color-trap': typeof ColorTrapRoute
+  '/memory-flip': typeof MemoryFlipRoute
+  '/reaction-test': typeof ReactionTestRoute
+  '/runaway-button': typeof RunawayButtonRoute
+  '/whack-a-critter': typeof WhackACritterRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/bubble-pop': typeof BubblePopRoute
+  '/color-trap': typeof ColorTrapRoute
+  '/memory-flip': typeof MemoryFlipRoute
+  '/reaction-test': typeof ReactionTestRoute
+  '/runaway-button': typeof RunawayButtonRoute
+  '/whack-a-critter': typeof WhackACritterRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/bubble-pop'
+    | '/color-trap'
+    | '/memory-flip'
+    | '/reaction-test'
+    | '/runaway-button'
+    | '/whack-a-critter'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/bubble-pop'
+    | '/color-trap'
+    | '/memory-flip'
+    | '/reaction-test'
+    | '/runaway-button'
+    | '/whack-a-critter'
+  id:
+    | '__root__'
+    | '/'
+    | '/bubble-pop'
+    | '/color-trap'
+    | '/memory-flip'
+    | '/reaction-test'
+    | '/runaway-button'
+    | '/whack-a-critter'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BubblePopRoute: typeof BubblePopRoute
+  ColorTrapRoute: typeof ColorTrapRoute
+  MemoryFlipRoute: typeof MemoryFlipRoute
+  ReactionTestRoute: typeof ReactionTestRoute
+  RunawayButtonRoute: typeof RunawayButtonRoute
+  WhackACritterRoute: typeof WhackACritterRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/bubble-pop': {
+      id: '/bubble-pop'
+      path: '/bubble-pop'
+      fullPath: '/bubble-pop'
+      preLoaderRoute: typeof BubblePopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/color-trap': {
+      id: '/color-trap'
+      path: '/color-trap'
+      fullPath: '/color-trap'
+      preLoaderRoute: typeof ColorTrapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/memory-flip': {
+      id: '/memory-flip'
+      path: '/memory-flip'
+      fullPath: '/memory-flip'
+      preLoaderRoute: typeof MemoryFlipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reaction-test': {
+      id: '/reaction-test'
+      path: '/reaction-test'
+      fullPath: '/reaction-test'
+      preLoaderRoute: typeof ReactionTestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/runaway-button': {
+      id: '/runaway-button'
+      path: '/runaway-button'
+      fullPath: '/runaway-button'
+      preLoaderRoute: typeof RunawayButtonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/whack-a-critter': {
+      id: '/whack-a-critter'
+      path: '/whack-a-critter'
+      fullPath: '/whack-a-critter'
+      preLoaderRoute: typeof WhackACritterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BubblePopRoute: BubblePopRoute,
+  ColorTrapRoute: ColorTrapRoute,
+  MemoryFlipRoute: MemoryFlipRoute,
+  ReactionTestRoute: ReactionTestRoute,
+  RunawayButtonRoute: RunawayButtonRoute,
+  WhackACritterRoute: WhackACritterRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
