@@ -6,8 +6,8 @@ export const Route = createFileRoute("/")({
       { title: "Sunset Arcade — Free Mini Games" },
       {
         name: "description",
-        content:
-          "Six quick, friendly mini games in a warm sunset arcade. Runaway Button, Bubble Pop, Reaction Test, Color Trap, Whack-a-Critter and Memory Flip.",
+      content:
+          "Six gloriously useless mini games. Scores reset, pairs un-match, and nothing you do matters. Runaway Button, Bubble Pop, Reaction Test, Color Trap, Whack-a-Critter and Memory Flip.",
       },
       { property: "og:title", content: "Sunset Arcade — Free Mini Games" },
       {
@@ -24,37 +24,37 @@ const games = [
   {
     to: "/runaway-button" as const,
     name: "Runaway Button",
-    tagline: "Catch the button that dodges your cursor.",
+    tagline: "Catch it and your score resets to zero.",
     emoji: "🏃",
   },
   {
     to: "/bubble-pop" as const,
     name: "Bubble Pop",
-    tagline: "Pop the rising bubbles before they float away.",
+    tagline: "Popping bubbles costs you points.",
     emoji: "🫧",
   },
   {
     to: "/reaction-test" as const,
     name: "Reaction Test",
-    tagline: "How fast are your reflexes? Watch out for decoys.",
+    tagline: "Your real reflex time is never shown.",
     emoji: "⚡",
   },
   {
     to: "/color-trap" as const,
     name: "Color Trap",
-    tagline: "A Stroop test that fights your own brain.",
+    tagline: "Every answer loses points. Every single one.",
     emoji: "🎨",
   },
   {
     to: "/whack-a-critter" as const,
     name: "Whack-a-Critter",
-    tagline: "Bonk the critters — but never the bombs.",
+    tagline: "Critters are worth zero. Bombs still hurt.",
     emoji: "🐹",
   },
   {
     to: "/memory-flip" as const,
     name: "Memory Flip",
-    tagline: "Match the pairs as the grid grows.",
+    tagline: "Pairs un-match themselves. Forever.",
     emoji: "🃏",
   },
 ];
@@ -72,11 +72,11 @@ function Home() {
       <main className="mx-auto max-w-5xl px-4 pb-20">
         <section className="py-12 text-center">
           <h1 className="mx-auto max-w-2xl font-display text-5xl font-bold leading-tight text-foreground sm:text-6xl">
-            Play something <span className="text-sunset">warm &amp; sunny</span>
+            Play something <span className="text-sunset">completely useless</span>
           </h1>
           <p className="mx-auto mt-4 max-w-xl text-lg text-muted-foreground">
-            Six bite-sized games. No accounts, no downloads — just pick one and
-            play.
+            Six games where nothing counts, scores evaporate, and effort is
+            punished. Pick one and accomplish nothing.
           </p>
         </section>
 

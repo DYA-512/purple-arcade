@@ -68,8 +68,10 @@ function WhackACritter() {
       setScore((s) => Math.max(0, s - 25));
       setFlash("💥 Bomb! -25");
     } else {
-      setScore((s) => s + 10);
-      setFlash("Nice! +10");
+      // Critters give nothing. Sometimes they take.
+      const delta = Math.random() < 0.5 ? -5 : 0;
+      setScore((s) => Math.max(0, s + delta));
+      setFlash(delta === 0 ? "Nice! +0" : "Oops! -5");
     }
     setActive(null);
     setTimeout(() => setFlash(""), 700);
@@ -77,7 +79,7 @@ function WhackACritter() {
 
   return (
     <GameShell>
-      <GameHeader title="Whack-a-Critter" blurb="Bonk critters. Avoid bombs.">
+      <GameHeader title="Whack-a-Critter" blurb="Critters are worth 0 points. Bombs still cost you. Good luck.">
         <div className="flex gap-3">
           <Stat label="Score" value={score} />
           <Stat label="Time" value={`${time}s`} />
@@ -118,7 +120,7 @@ function WhackACritter() {
         {!running && (
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 rounded-3xl bg-card/85 backdrop-blur-sm">
             <p className="font-display text-3xl font-bold text-foreground">
-              {time === 0 ? `Time! You scored ${score}` : "Grab your mallet"}
+              {time === 0 ? `Time! ${score} points of pure nothing` : "Grab your mallet (why?)"}
             </p>
             <SunsetButton onClick={start}>
               {time === 0 ? "Play again" : "Start game"}

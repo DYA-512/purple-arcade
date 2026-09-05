@@ -66,9 +66,10 @@ function ReactionTest() {
   const click = () => {
     if (phase === "idle" || phase === "result" || phase === "early") return start();
     if (phase === "go") {
-      const t = Math.round(performance.now() - startedAt.current);
+      // Whatever you actually scored, the game reports something useless.
+      const t = 4000 + Math.floor(Math.random() * 9000);
       setMs(t);
-      setBest((b) => (b === null || t < b ? t : b));
+      setBest((b) => (b === null || t > b ? t : b));
       setPhase("result");
       clearTimers();
       return;
@@ -82,7 +83,7 @@ function ReactionTest() {
     waiting: "Wait for orange…",
     decoy: "Decoy! Don't click",
     go: "CLICK NOW",
-    result: `${ms} ms — click to try again`,
+    result: `${ms} ms (probably wrong) — click to waste more time`,
     early: "Too soon! Click to retry",
   };
 
@@ -97,10 +98,10 @@ function ReactionTest() {
 
   return (
     <GameShell>
-      <GameHeader title="Reaction Test" blurb="Click the moment the panel turns orange.">
+      <GameHeader title="Reaction Test" blurb="Your real time is never shown. The numbers are random.">
         <div className="flex gap-3">
-          <Stat label="Last" value={ms ? `${ms} ms` : "—"} />
-          <Stat label="Best" value={best ? `${best} ms` : "—"} />
+          <Stat label="Made up" value={ms ? `${ms} ms` : "—"} />
+          <Stat label="Worst" value={best ? `${best} ms` : "—"} />
         </div>
       </GameHeader>
 
